@@ -1,0 +1,65 @@
+
+
+===File organize===
+# build a simple script
+# add features
+# implement simple llms for classification
+
+
+
+phrase 1:
+    required tools/ersources (ig): pathlib, os, shutil, dictionaries, loops, functions
+    selects a folder, read every file, determine extension, create the necessary folders, move files
+    path objects, suffix, stem, exists(), mkdir(), move()
+
+phrasse 2:
+    working is done, nows time for actual data organization
+    Images-
+        jpg
+        jpeg
+        png
+        gif
+        webp
+    Documents-
+        pdf
+        doc
+        docx
+        txt
+        ppt
+        pptx
+        xlsx
+    Videos-
+        mp4
+        mkv
+        mov
+        avi
+    Music-
+        mp3
+        wav
+        flac
+    Archives-
+        zip
+        rar
+        7z
+
+phrase 3:
+    handling name crashes, instead of overwriting the files, produce _1, _2, etc between the name and the extension
+    logging, storing the history, for better configuration use json to transfer files
+
+phrase 4:
+    continous watching, inside while True loop, check for a new file every few seconds and start moving,
+    or use watchdog, whenever window detects a new file, immediately organize
+
+phrase 5:
+    startup with windows using startup folder, window task schedule
+    add a gui using tkinter, desktop development
+
+phrase 6:
+    background threads, the gui should never freeze, threading,
+    undo feature to undo the last action,
+    duplicate detection, hashlib, for two identical files
+
+phrase 7:
+    AI classification, ai reads the filename, extension, and some extracted text and predictss classification
+    
+

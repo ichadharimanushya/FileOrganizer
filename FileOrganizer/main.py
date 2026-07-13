@@ -35,3 +35,8 @@ for file in downloaded_files:
                 break
                     
 
+
+
+#  phrase 3:
+#     handling name crashes, instead of overwriting the files, produce _1, _2, etc between the name and the extension
+#     logging, storing the history, for better configuration use json to transfer files

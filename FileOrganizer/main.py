@@ -2,6 +2,7 @@ from pathlib import Path  # for the path of the files and stuff
 import shutil   # moving and copying the files  
 import json     # for the love of the game
 import logging  # for recording every step in case of something something...
+import watchdog # keeps an eye for a new folder
 
 SOURCE_DIR = Path().home()/"Downloads" # from where the files will be abducted...yes abducted!
 DESTINATION_DIR = Path("D:/AllDocuments") # location where the files will be sorted into different folders

@@ -3,118 +3,58 @@ import shutil   # moving and copying the files
 import json     # for the love of the game
 import logging  # for recording every step in case of something something...
 
-
 SOURCE_DIR = Path().home()/"Downloads" # from where the files will be abducted...yes abducted!
-DESTINATION_DIR = Path("D:/AllDocuments") # folders where the files will be sorted into
-
-downloaded_files =  list(SOURCE_DIR.iterdir())
-organised_folders = list(DESTINATION_DIR.iterdir())
-
-
-# organization_criteria = {
-#     "applicationexe":[".exe"],
-#     "images":[".jpg",".jpeg",".png",".gif",".webp"],
-#     "documents":[".pdf",".doc",".docx",".txt",".ppt",".pptx",".xlsx"],
-#     "videos":[".mp4",".mkv",".mov",".avi"],
-#     "audios":[".mp3",".wav",".flac"],
-#     "others":[".zip",".rar",".7z"]
-# }
-
-config = Path(__file__).parent/"config.json"
-with open(config, 'r') as f:
-    data = json.load(f)
-
-
+DESTINATION_DIR = Path("D:/AllDocuments") # location where the files will be sorted into different folders
 
 logging.basicConfig(level = logging.INFO,
-                    filename = Path(__file__).parent/"info.log",
-                    filemode = 'a',
-                    format = "%(asctime)s - %(levelname)s - %(message)s")
+                        filename = Path(__file__).parent/"info.log",
+                        filemode = 'a',
+                        format = "--|%(asctime)s|--\n\t> %(message)s\n")
+
+with open(Path(__file__).parent/"config.json", 'r') as f:
+    data = json.load(f)
+
+def log(message):
+    logging.info(message)
+
+def unique_filename(file, location):
+    candidate_name = file.name
+    candidate_path = location/candidate_name
+    number = 0
+    while candidate_path.exists():
+        number += 1
+        candidate_name = f"{file.stem}_{number}{file.suffix}"
+        candidate_path = location/candidate_name
+    return candidate_path
+
+def create_folder(path):
+    if not path.exists():
+        path.mkdir()
+        log(f"CREATED NEW FOLDER: {path}")
+
+def get_folder_name(ext, configurations):
+    for foldername in configurations:
+        if ext in configurations[foldername]:
+            return foldername
+    return None
+
+def organise_file(SOURCE_PATH, DESTINATION_PATH):
+    for file in Path(SOURCE_PATH).iterdir():
+        if file.is_file():
+            folder = get_folder_name(file.suffix, data)
+            if folder == None:
+                log(f"SKIPPED OVER THE FILE: {file}")
+                continue
+            create_folder(DESTINATION_PATH/folder)
+            destination = unique_filename(file, DESTINATION_PATH/folder)
+            shutil.move(src = file, dst = destination)
+            log(f"MOVED FILE: | FROM: {file} | TO: {destination}")
+        else:
+            log(f"SKIPPED OVER THE FOLDER: {file}")
 
 
-# for file in downloaded_files:
-#     if file.is_file():
-#         for key in organization_criteria:
-#             found = False
-#             if file.suffix in organization_criteria[key]:
-#                 for folder in organised_folders:
-#                     if folder.name == key:
-#                         found = True
-#                         break
-#                 if not found:
-#                     (DESTINATION_DIR/key).mkdir()
-#                     organised_folders.append(DESTINATION_DIR/key)
-#                 shutil.move(src = file, dst = DESTINATION_DIR/key)
-#                 break
-                    
+log("PROGRAM STARTED")
 
+organise_file(SOURCE_DIR, DESTINATION_DIR)
 
-
-#  phrase 3:
-#     handling name crashes, instead of overwriting the files, produce _1, _2, etc between the name and the extension
-#     logging, storing the history, for better configuration use json to transfer files
-
-logging.info("PROGRAM STARTED")
-
-for file in downloaded_files:
-    if file.is_file():
-        for key in data:
-            found = False
-            if file.suffix in data[key]:
-                for folder in organised_folders:
-                    if folder.name == key:
-                        found = True
-                        break
-                if not found:
-                    (DESTINATION_DIR/key).mkdir()
-                    logging.info(f"CREATED FOLDER: {DESTINATION_DIR/key}")
-                    organised_folders.append(DESTINATION_DIR/key)
-                
-                # move the file
-                candidate_name = file.name
-                candidate_path = DESTINATION_DIR/key/candidate_name
-                number = 1
-                while candidate_path.exists():
-                    logging.info(f"DUPLICATE DETECTED: {candidate_path}")
-                    candidate_name = f"{file.stem}_{number}{file.suffix}"
-                    candidate_path = DESTINATION_DIR/key/candidate_name
-                    logging.info(f"TRYING FILENAME: {candidate_name}")
-                    number += 1
-                shutil.move(src = file, dst = candidate_path)
-                logging.info(f"MOVED FILE | FROM: {file} | TO: {candidate_path}")
-    else:
-        logging.info(f"SKIPPED FOLDER: {file}")
-
-
-logging.info("PROGRAM FINISHED")
-
-
-                # potential_duplicates = list((DESTINATION_DIR/key).iterdir())
-                # duplicate_files = 0
-                # for f in files_at_destination_dir:
-                #     if file.name == f.name and file.suffix == f.suffix:
-                #         duplicate_files += 1
-                # if not duplicate_files:
-                #     shutil.move(src = file, dst = DESTINATION_DIR/key)
-                # else:
-                #     parent_file = file.parent
-                #     file_name = file.stem
-                #     file_extension = file.suffix
-                #     new_file_name = f"{file_name}_{duplicate_files}{file_extension}"
-                #     final_file = Path(parent_file/new_file_name)
-                #     shutil.move(src = final_file, dst = DESTINATION_DIR/key)
-                # break
-
-
-                # number = 0
-                # file_name_ = file.name
-                # while (DESTINATION_DIR/key/file_name_ in potential_duplicates):
-                #     number += 1
-                #     parent_file = file.parent
-                #     file_name = file.stem
-                #     file_extension = file.suffix
-                #     new_file_name = f"{file_name}_{number}{file_extension}"
-                #     file_name_ = Path(parent_file/new_file_name)
-                # shutil.move(src = file, dst = parent_file/new_file_name)  
-                # shutil.move(src = file_name_, dst = DESTINATION_DIR/key)
-                # break
+log("PROGRAM ENDED\n\n\n")

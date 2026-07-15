@@ -1,6 +1,7 @@
 from pathlib import Path  # for the path of the files and stuff
 import shutil   # moving and copying the files  
 import json     # for the love of the game
+import logging  # for recording every step in case of something something...
 
 
 SOURCE_DIR = Path().home()/"Downloads" # from where the files will be abducted...yes abducted!
@@ -22,6 +23,13 @@ organised_folders = list(DESTINATION_DIR.iterdir())
 config = Path(__file__).parent/"config.json"
 with open(config, 'r') as f:
     data = json.load(f)
+
+
+
+logging.basicConfig(level = logging.INFO,
+                    filename = Path(__file__).parent/"info.log",
+                    filemode = 'a',
+                    format = "%(asctime)s - %(levelname)s - %(message)s")
 
 
 # for file in downloaded_files:
@@ -46,6 +54,7 @@ with open(config, 'r') as f:
 #     handling name crashes, instead of overwriting the files, produce _1, _2, etc between the name and the extension
 #     logging, storing the history, for better configuration use json to transfer files
 
+logging.info("PROGRAM STARTED")
 
 for file in downloaded_files:
     if file.is_file():
@@ -58,6 +67,7 @@ for file in downloaded_files:
                         break
                 if not found:
                     (DESTINATION_DIR/key).mkdir()
+                    logging.info(f"CREATED FOLDER: {DESTINATION_DIR/key}")
                     organised_folders.append(DESTINATION_DIR/key)
                 
                 # move the file
@@ -65,10 +75,19 @@ for file in downloaded_files:
                 candidate_path = DESTINATION_DIR/key/candidate_name
                 number = 1
                 while candidate_path.exists():
+                    logging.info(f"DUPLICATE DETECTED: {candidate_path}")
                     candidate_name = f"{file.stem}_{number}{file.suffix}"
                     candidate_path = DESTINATION_DIR/key/candidate_name
+                    logging.info(f"TRYING FILENAME: {candidate_name}")
                     number += 1
                 shutil.move(src = file, dst = candidate_path)
+                logging.info(f"MOVED FILE | FROM: {file} | TO: {candidate_path}")
+    else:
+        logging.info(f"SKIPPED FOLDER: {file}")
+
+
+logging.info("PROGRAM FINISHED")
+
 
                 # potential_duplicates = list((DESTINATION_DIR/key).iterdir())
                 # duplicate_files = 0

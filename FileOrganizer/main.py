@@ -38,23 +38,24 @@ def get_folder_name(ext, configurations):
             return foldername
     return None
 
-def organise_file(SOURCE_PATH, DESTINATION_PATH):
-    for file in Path(SOURCE_PATH).iterdir():
+def organise_file(source_path, destination_path):
+    for file in Path(source_path).iterdir():
         if file.is_file():
             folder = get_folder_name(file.suffix, data)
             if folder == None:
-                log(f"SKIPPED OVER THE FILE: {file}")
+                log(f"UNKNOWN FILE FORMAT FOR: {file}")
                 continue
-            create_folder(DESTINATION_PATH/folder)
-            destination = unique_filename(file, DESTINATION_PATH/folder)
+            create_folder(destination_path/folder)
+            destination = unique_filename(file, destination_path/folder)
             shutil.move(src = file, dst = destination)
             log(f"MOVED FILE: | FROM: {file} | TO: {destination}")
         else:
             log(f"SKIPPED OVER THE FOLDER: {file}")
 
+def main():
+    log("PROGRAM STARTED")
+    organise_file(SOURCE_DIR, DESTINATION_DIR)
+    log("PROGRAM ENDED\n\n\n")
 
-log("PROGRAM STARTED")
-
-organise_file(SOURCE_DIR, DESTINATION_DIR)
-
-log("PROGRAM ENDED\n\n\n")
+if __name__ == "__main__":
+    main()

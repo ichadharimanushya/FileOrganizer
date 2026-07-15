@@ -93,3 +93,57 @@
 
 
 
+--|2026-07-15 21:35:02,905|--
+	> PROGRAM STARTED
+
+--|2026-07-15 21:35:15,957|--
+	> PROGRAM STARTED
+
+--|2026-07-15 21:35:48,918|--
+	> PROGRAM STARTED
+
+--|2026-07-15 21:35:48,931|--
+	> MOVED FILE: | FROM: C:\Users\Asus\Downloads\ChromeSetup.exe | TO: D:\AllDocuments\applicationexe\ChromeSetup.exe
+
+--|2026-07-15 21:35:48,931|--
+	> SKIPPED OVER THE FILE: C:\Users\Asus\Downloads\desktop.ini
+
+--|2026-07-15 21:35:48,932|--
+	> MOVED FILE: | FROM: C:\Users\Asus\Downloads\EdgeUpdatedBlocked.png | TO: D:\AllDocuments\images\EdgeUpdatedBlocked.png
+
+--|2026-07-15 21:35:48,980|--
+	> MOVED FILE: | FROM: C:\Users\Asus\Downloads\Git-2.54.0-64-bit.exe | TO: D:\AllDocuments\applicationexe\Git-2.54.0-64-bit.exe
+
+--|2026-07-15 21:35:48,980|--
+	> SKIPPED OVER THE FOLDER: C:\Users\Asus\Downloads\minecraft-cursore_7ed252adad_VSTHEMES-ORG
+
+--|2026-07-15 21:35:48,983|--
+	> MOVED FILE: | FROM: C:\Users\Asus\Downloads\mingw-get-setup.exe | TO: D:\AllDocuments\applicationexe\mingw-get-setup.exe
+
+--|2026-07-15 21:35:48,985|--
+	> MOVED FILE: | FROM: C:\Users\Asus\Downloads\PFP.jpg | TO: D:\AllDocuments\images\PFP.jpg
+
+--|2026-07-15 21:35:48,986|--
+	> MOVED FILE: | FROM: C:\Users\Asus\Downloads\Prakhar Drawing.png | TO: D:\AllDocuments\images\Prakhar Drawing.png
+
+--|2026-07-15 21:35:49,008|--
+	> MOVED FILE: | FROM: C:\Users\Asus\Downloads\python-3.14.5-amd64.exe | TO: D:\AllDocuments\applicationexe\python-3.14.5-amd64.exe
+
+--|2026-07-15 21:35:49,096|--
+	> MOVED FILE: | FROM: C:\Users\Asus\Downloads\Vivaldi.8.1.4087.48.x64.exe | TO: D:\AllDocuments\applicationexe\Vivaldi.8.1.4087.48.x64.exe
+
+--|2026-07-15 21:35:49,200|--
+	> MOVED FILE: | FROM: C:\Users\Asus\Downloads\VSCodeUserSetup-x64-1.121.0.exe | TO: D:\AllDocuments\applicationexe\VSCodeUserSetup-x64-1.121.0.exe
+
+--|2026-07-15 21:35:49,202|--
+	> MOVED FILE: | FROM: C:\Users\Asus\Downloads\WallpaperVortex.png | TO: D:\AllDocuments\images\WallpaperVortex.png
+
+--|2026-07-15 21:35:49,242|--
+	> MOVED FILE: | FROM: C:\Users\Asus\Downloads\Winhance.Installer.exe | TO: D:\AllDocuments\applicationexe\Winhance.Installer.exe
+
+--|2026-07-15 21:35:49,242|--
+	> PROGRAM ENDED
+
+
+
+

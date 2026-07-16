@@ -1,6 +1,6 @@
 from pathlib import Path  # for the path of the files and stuff
 import shutil   # moving and copying the files  
-import json     # for the love of the game
+import json    # for the love of the game
 
 with open(Path(__file__).parent/"config.json", 'r') as f:
     data = json.load(f)

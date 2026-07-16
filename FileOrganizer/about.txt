@@ -73,5 +73,3 @@ phrase 6:
 
 phrase 7:
     AI classification, ai reads the filename, extension, and some extracted text and predictss classification
-    
-

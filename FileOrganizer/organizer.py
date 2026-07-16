@@ -25,7 +25,7 @@ def get_folder_name(ext, configurations):
             return foldername
     return None
 
-def organise_file(file, destination_path):
+def organise_folder(file, destination_path):
     folder = get_folder_name(file.suffix, data)
     if folder is None:
         return

@@ -103,5 +103,5 @@
 
 
 # for file in (Path().home()/"Downloads").iterdir():  
-#     organizer.organise_file(file, Path("D:/AllDocuments"))
+#     organizer.organise_folder(file, Path("D:/AllDocuments"))
 

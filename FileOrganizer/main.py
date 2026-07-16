@@ -8,18 +8,11 @@ SOURCE_DIR = Path().home()/"Downloads"
 DESTINATION_DIR = Path("D:/AllDocuments")
 
 class FolderHandler(FileSystemEventHandler):
-#     def on_created(self, event):
-#         if event.is_directory:
-#             return
-#         time.sleep(5)
-#         organize()
-#         time.sleep(5)
     def on_modified(self, event):
         if event.is_directory:
             return
         time.sleep(5)
-        organize()
-        time.sleep(5)
+        organizer.organise_folder(SOURCE_DIR, DESTINATION_DIR)
 
 def watchdog_observer():
     event_handler = FolderHandler() # instance of handler
@@ -30,19 +23,14 @@ def watchdog_observer():
         while True:
             time.sleep(1)
     except KeyboardInterrupt: # ctrl + c
+        pass
+    finally:
         observer.stop()
-    observer.join()     # Wait until the background thread finishes cleaning up
-
-def organize():  
-    organizer.organise_folder(SOURCE_DIR, DESTINATION_DIR)
+        observer.join()     # Wait until the background thread finishes cleaning up
 
 def main():
-    organize()
+    organizer.organise_folder(SOURCE_DIR, DESTINATION_DIR)
     watchdog_observer()
 
 if __name__ == "__main__":
     main()
-
-
-
-

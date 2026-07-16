@@ -27,6 +27,7 @@ def get_folder_name(ext, configurations):
 
 def organise_folder(source_path, destination_path):
     for file in source_path.iterdir():
+        if not file.is_file(): continue
         print(file.name)
         folder = get_folder_name(file.suffix, data)
         if folder is None:

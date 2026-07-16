@@ -94,10 +94,14 @@
 # if __name__ == "__main__":
 #     main()
 
-from pathlib import Path
-import organizer
 
 
-for file in (Path().home()/"Downloads").iterdir():  
-    organizer.organise_file(file, Path("D:/AllDocuments"))
+
+
+# from pathlib import Path
+# import organizer
+
+
+# for file in (Path().home()/"Downloads").iterdir():  
+#     organizer.organise_file(file, Path("D:/AllDocuments"))
 

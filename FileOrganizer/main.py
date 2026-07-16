@@ -28,9 +28,6 @@ def watchdog_observer():
         observer.stop()
         observer.join()     # Wait until the background thread finishes cleaning up
 
-def main():
+def organise_and_observer():
     organizer.organise_folder(SOURCE_DIR, DESTINATION_DIR)
     watchdog_observer()
-
-if __name__ == "__main__":
-    main()

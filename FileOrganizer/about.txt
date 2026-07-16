@@ -53,6 +53,18 @@ phrase 4:
 phrase 5:
     startup with windows using startup folder, window task schedule
     add a gui using tkinter, desktop development
+    """
+    Tk
+    label
+    button
+    entry
+    grid()
+    frame
+    filedialog
+    stringvar
+    messagebox
+    threading (after gui)
+    """
 
 phrase 6:
     background threads, the gui should never freeze, threading,
